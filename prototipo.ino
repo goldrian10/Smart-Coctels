@@ -25,9 +25,8 @@ void setup() {
   pinMode(bomb1Pin, OUTPUT);   
   pinMode(bomb2Pin, OUTPUT);   
   pinMode(bomb3Pin, OUTPUT);   
-  pinMode(bomb4Pin, OUTPUT);   
+  pinMode(bomb4Pin, OUTPUT);
      
-  
  
 }
 
@@ -104,13 +103,13 @@ void vodka(int delayVodka){
 }
 
 void limon(int delayLimon){
-   digitalWrite(bomb2,HIGH);
+  digitalWrite(bomb2,HIGH);
   delay(delayLimon);
   digitalWrite(bomb2,LOW); 
 }
 
 void arandanos(int delayArandanos){
-   digitalWrite(bomb3,HIGH);
+  digitalWrite(bomb3,HIGH);
   delay(delayArandanos);
   digitalWrite(bomb3,LOW);
 }
