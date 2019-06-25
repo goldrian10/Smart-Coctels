@@ -1,58 +1,25 @@
 
-const int button1Pin = 2; 
-const int button2Pin = 3;
-const int button3Pin = 4;
-const int button4Pin = 53;
-const int buttonIzqPin = 6;
-const int buttonDerPin = 7;
-const int buttonOkPin = 8;
-const int bomb1Pin = 9;
-const int bomb2Pin = 10;      
-const int bomb3Pin = 11;  
-const int bomb4Pin = 12;  
+#include <LiquidCrystal.h>
+int buttonIzqPin = 5;
+int buttonDerPin = 6;
+int buttonOkPin = 7;
 int activar1=0; activar2=0, activar3=0, activar4=0;
 int delayVodka=0, delayLimon=0, delayArandanos=0, delayNaranja=0;
 
-void setup() {
+LiquidCrystal lcd(12 11 4 3 2 1) // RS ENABLE D4 D5 D6 D7
 
-  pinMode(button1Pin, INPUT);      
-  pinMode(button2Pin, INPUT);   
-  pinMode(button3Pin, INPUT);   
-  pinMode(button4Pin, INPUT);   
+void setup() {
+  
   pinMode(buttonIzqPin, INPUT);   
   pinMode(buttonDerPin, INPUT);   
   pinMode(buttonOkPin, INPUT);   
-  pinMode(bomb1Pin, OUTPUT);   
-  pinMode(bomb2Pin, OUTPUT);   
-  pinMode(bomb3Pin, OUTPUT);   
-  pinMode(bomb4Pin, OUTPUT);
-     
  
+    
 }
 
 void loop(){
   
-  activar1=digitalRead(button1Pin);
-  activar2=digitalRead(button2Pin);
-  activar3=digitalRead(button3Pin);
-  activar4=digitalRead(button4Pin);
-  
-  if(activar1==HIGH){
-    cosmopolitan();
-   
-  }
-  
-  if(activar2==HIGH){
-   redrooster(); 
-  }
-  
-  if(activar3==HIGH){
-   screwdriver(); 
-  }
-  
-  if(activar4==HIGH){
-   jinglejuice(); 
-  }  
+    
   
 }//fin loop
 
