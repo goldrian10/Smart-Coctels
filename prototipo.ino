@@ -1,16 +1,15 @@
-
 #include <LiquidCrystal.h>
 int buttonIzqPin = A0;
-int buttonDerPin = A6;
-int buttonOkPin = A5;
+int buttonDerPin = A1;
+int buttonOkPin = A2;
 int selector=1;
 int delayVodka=0, delayLimon=0, delayArandanos=0, delayNaranja=0;
 int bomb1=6, bomb2=7, bomb3=8, bomb4=9;
+
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // RS ENABLE D4 D5 D6 D7
 
-void setup() {
-  Serial.begin(9600);
-  lcd.begin(16, 2);
+void setup(){
+   lcd.begin(16, 2);
    pinMode(buttonIzqPin, INPUT);   
    pinMode(buttonDerPin, INPUT);   
    pinMode(buttonOkPin, INPUT);
@@ -18,53 +17,71 @@ void setup() {
    pinMode(bomb2,OUTPUT);
    pinMode(bomb3,OUTPUT);
    pinMode(bomb4,OUTPUT);  
-  lcd.print("SMART COCTELS");
-    
-}
+   lcd.print("  SMART COCTELS");
+   delay(2000);
+}//fin del set up
 
 void loop(){
   
-  delay(2000);
+  delay(70);
   lcd.clear();
   int buttonIzq=digitalRead(buttonIzqPin);
   int buttonDer=digitalRead(buttonDerPin);
-  int boton=0;
+  int buttonOk=digitalRead(buttonOkPin);
+  
   if(buttonDer==HIGH){
    selector++;
-   boton=1; 
    if(selector>4){
-     selector=1;
+    selector=1;
+    
    }
+   delay(700);
   }
+  
   if(buttonIzq==HIGH){
     selector--;
-    boton=2;
     if(selector<1){
      selector=4; 
     }
+    delay(700);
   }
   
-  Serial.println(selector);
-  Serial.println(boton);
   switch(selector){
    case 1:
-    lcd.print("COSMOPOLITAN");
-    cosmopolitan();
+    lcd.print("  COSMOPOLITAN");
+    if(buttonOk==HIGH){
+      cosmopolitan();
+      delay(2000);
+    }
     break;
+    
    case 2:
-    lcd.print("RED ROOSTER");
-    redrooster();
+    lcd.print("  RED ROOSTER");
+    if(buttonOk==HIGH){
+      redrooster();
+      delay(2000);
+    }
     break;
+    
+    
    case 3:
-    lcd.print("SCREWDRIVER");
-    screwdriver();
+    lcd.print("  SCREWDRIVER");
+    if(buttonOk==HIGH){
+      screwdriver();
+      delay(2000);
+    }
     break;
+    
+    
    case 4:
-    lcd.print("JINGLE JUICE");
-    jinglejuice();
+    lcd.print("  JINGLE JUICE");
+    if(buttonOk==HIGH){
+      jinglejuice();
+      delay(2000);
+    }
     break; 
     
-  }
+  }//fin del switch
   
 }//fin loop
 
@@ -80,7 +97,7 @@ void cosmopolitan(){
  limon(0);
  delay(delayVodka-delayLimon);
  vodka(0);
- delay(delayArandanos-delayLimon-delayVodka);
+ delay(0);
  arandanos(0);
 }
 
@@ -96,7 +113,7 @@ void redrooster(){
  vodka(0);
  delay(delayNaranja-delayVodka);
  naranja(0);
- delay(delayArandanos-delayNaranja-delayVodka);
+ delay(0);
  arandanos(0);
 }
 
@@ -125,9 +142,9 @@ void jinglejuice(){
  
  delay(delayLimon);
  limon(0);
- delay(delayVodka-delayLimon);
+ delay(1000);
  vodka(0);
- delay();
+ delay(2000);
  naranja(0);
  delay(1);
  arandanos(0);
