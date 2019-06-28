@@ -17,13 +17,24 @@ void setup(){
    pinMode(bomb2,OUTPUT);
    pinMode(bomb3,OUTPUT);
    pinMode(bomb4,OUTPUT);  
-   lcd.print("  SMART COCTELS");
-   delay(2000);
+  // lcd.print("  SMART COCTELS");
+   //delay(2000);
+   lcd.setCursor (3,0);      // empezamos con una bienvenida la cual solo se repetira una sola vez.
+
+  lcd.print("WELCOME TO");
+
+  lcd.setCursor (2,1);
+
+  lcd.print("SMART-COCTELS");
+
+  delay (5000);
+
+  lcd.clear();
 }//fin del set up
 
 void loop(){
   
-  delay(70);
+  delay(70);//delay de resfrescamiento
   lcd.clear();
   int buttonIzq=digitalRead(buttonIzqPin);
   int buttonDer=digitalRead(buttonDerPin);
@@ -48,106 +59,108 @@ void loop(){
   
   switch(selector){
    case 1:
-    lcd.print("  COSMOPOLITAN");
-    if(buttonOk==HIGH){
-      cosmopolitan();
-      delay(2000);
-    }
+       delayVodka=2000;
+       delayLimon=900;
+       delayArandanos=5000;
+       cosmopolitan(buttonOk, delayVodka, delayLimon, delayArandanos);
     break;
     
    case 2:
-    lcd.print("  RED ROOSTER");
-    if(buttonOk==HIGH){
-      redrooster();
-      delay(2000);
-    }
+        delayVodka=2000;
+        delayArandanos=5000;
+        delayNaranja=5000;
+        redrooster(buttonOk, delayVodka, delayArandanos, delayNaranja);
+         
     break;
     
     
    case 3:
-    lcd.print("  SCREWDRIVER");
-    if(buttonOk==HIGH){
-      screwdriver();
-      delay(2000);
-    }
+        delayVodka=2000;
+        delayNaranja=5000;
+        screwdriver(buttonOk, delayVodka, delayNaranja);
     break;
     
     
    case 4:
-    lcd.print("  JINGLE JUICE");
-    if(buttonOk==HIGH){
-      jinglejuice();
-      delay(2000);
-    }
+        delayVodka=2000;
+        delayLimon=900;
+        delayArandanos=2000;
+        delayNaranja=2000;
+        jinglejuice(buttonOk, delayVodka, delayLimon, delayArandanos, delayNaranja);
+      
     break; 
     
   }//fin del switch
   
 }//fin loop
 
-void cosmopolitan(){
- delayVodka=2000;
- delayLimon=900;
- delayArandanos=5000;
- 
- vodka(1);
- limon(1); 
- arandanos(1);
- delay(delayLimon);
- limon(0);
- delay(delayVodka-delayLimon);
- vodka(0);
- delay(0);
- arandanos(0);
+void cosmopolitan(int buttonOk, int delayVodka, int delayLimon, int delayArandanos){
+
+ lcd.print("  COSMOPOLITAN");
+    if(buttonOk==HIGH){
+     vodka(1);
+     limon(1); 
+     arandanos(1);
+     delay(delayLimon);
+     limon(0);
+     delay(delayVodka-delayLimon);
+     vodka(0);
+     delay(0);
+     arandanos(0);
+     delay(2000);
+    }
 }
 
-void redrooster(){
-  delayVodka=2000;
-  delayArandanos=5000;
-  delayNaranja=5000;
- 
- vodka(1);
- naranja(1); 
- arandanos(1);
- delay(delayVodka);
- vodka(0);
- delay(delayNaranja-delayVodka);
- naranja(0);
- delay(0);
- arandanos(0);
+void redrooster(int buttonOk, int delayVodka, int delayArandanos, int delayNaranja){
+
+    lcd.print("  RED ROOSTER");
+    if(buttonOk==HIGH){
+     vodka(1);
+     naranja(1); 
+     arandanos(1);
+     delay(delayVodka);
+     vodka(0);
+     delay(delayNaranja-delayVodka);
+     naranja(0);
+     delay(0);
+     arandanos(0);
+     delay(2000);
+    }
 }
 
-void screwdriver(){
-  delayVodka=2000;
-  delayNaranja=5000;
-  
-   vodka(1);
-   naranja(1); 
-   delay(delayVodka);
-   vodka(0);
-   delay(delayNaranja-delayVodka);
-   naranja(0);
+void screwdriver(int buttonOk, int delayVodka, int delayNaranja){
+
+    lcd.print("  SCREWDRIVER");
+    if(buttonOk==HIGH){
+     vodka(1);
+     naranja(1); 
+     delay(delayVodka);
+     vodka(0);
+     delay(delayNaranja-delayVodka);
+     naranja(0);
+     delay(2000);
+    }
 }
 
-void jinglejuice(){
-  delayVodka=2000;
-  delayLimon=900;
-  delayArandanos=2000;
-  delayNaranja=2000;
-  
- vodka(1);
- naranja(1); 
- arandanos(1);
- limon(1);
- 
- delay(delayLimon);
- limon(0);
- delay(1000);
- vodka(0);
- delay(2000);
- naranja(0);
- delay(1);
- arandanos(0);
+void jinglejuice(int buttonOk, int delayVodka, int delayLimon, int delayArandanos, int delayNaranja){
+
+  lcd.print("  JINGLE JUICE");
+    if(buttonOk==HIGH){
+     vodka(1);
+     naranja(1); 
+     arandanos(1);
+     limon(1);
+     
+     delay(delayLimon);
+     limon(0);
+     delay(1000);
+     vodka(0);
+     delay(2000);
+     naranja(0);
+     delay(1);
+     arandanos(0);
+     delay(2000);
+    }
 }
 
 void vodka(int estado){
