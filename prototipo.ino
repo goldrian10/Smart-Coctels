@@ -1,12 +1,13 @@
 #include <LiquidCrystal.h>
-int buttonIzqPin = A0;
-int buttonDerPin = A1;
-int buttonOkPin = A2;
+
+int buttonIzqPin = 4;
+int buttonDerPin = 5;
+int buttonOkPin = 6;
 int selector=1;
 int delayVodka=0, delayLimon=0, delayArandanos=0, delayNaranja=0;
-int bomb1=6, bomb2=7, bomb3=8, bomb4=9;
+int bomb1=A1, bomb2=A2, bomb3=A3, bomb4=A4;
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // RS ENABLE D4 D5 D6 D7
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12); // RS ENABLE D4 D5 D6 D7
 
 void setup(){
    lcd.begin(16, 2);
@@ -17,19 +18,19 @@ void setup(){
    pinMode(bomb2,OUTPUT);
    pinMode(bomb3,OUTPUT);
    pinMode(bomb4,OUTPUT);  
-  // lcd.print("  SMART COCTELS");
-   //delay(2000);
-   lcd.setCursor (3,0);      // empezamos con una bienvenida la cual solo se repetira una sola vez.
+  
+  lcd.setCursor (5,0);      // empezamos con una bienvenida la cual solo se repetira una sola vez.
 
-  lcd.print("WELCOME TO");
+  lcd.print("Smart");
 
-  lcd.setCursor (2,1);
+  lcd.setCursor (4,1);
 
-  lcd.print("SMART-COCTELS");
+  lcd.print("Coctels");
 
-  delay (5000);
+  delay (2000);
 
-  lcd.clear();
+  
+
 }//fin del set up
 
 void loop(){
